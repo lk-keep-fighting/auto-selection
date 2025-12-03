@@ -1,0 +1,1 @@
+"""Package containing static assets used by detectors."""

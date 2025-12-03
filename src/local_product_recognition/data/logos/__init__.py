@@ -1,0 +1,1 @@
+"""Synthetic logo templates used for brand matching."""
