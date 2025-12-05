@@ -13,3 +13,11 @@ venv/
 dist/
 build/
 *.egg-info/
+
+# Browser automation
+browser_profile/
+browser_cookies.json
+downloaded_images/
+browser_analysis_results.json
+*.pt
+*.onnx

@@ -1,0 +1,33 @@
+{
+  "targetUrl": "https://www.sellersprite.com/v3/product-research?market=US&page=1&size=60&symbolFlag=true&monthName=bsr_sales_nearly&selectType=2&filterSub=false&weightUnit=g&order%5Bfield%5D=amz_unit&order%5Bdesc%5D=true&productTags=%5B%5D&nodeIdPaths=%5B%5D&sellerTypes=%5B%22FBA%22%5D&eligibility=%5B%5D&pkgDimensionTypeList=%5B%5D&sellerNationList=%5B%5D&minFba=1&maxFba=50&minPrice=60&maxPrice=99&lowPrice=N&minSellers=2&maxSellers=10000000&minSales=40&maxSales=100000&outOfKeywords=LEGO,Electric%20Chainsaw,Cordless,Battery%20Powered,Electric,Chainsaw,Sawzall&excludeBrands=LEGO,HP,SONY&video=",
+  "selectors": {
+    "imageList": ".relation-content-card",
+    "cardItem": ".card-wrap",
+    "imageItem": ".back_img .img",
+    "asinSelector": ".asin-fba .asin .text-black",
+    "productLinkSelector": ".asin a[href*='/dp/']",
+    "titleSelector": "p.over-ellipsis.text-black[title]",
+    "brandSelector": "p.flex-center .over-ellipsis.text-black.sub-title"
+  },
+  "browser": {
+    "headless": false,
+    "window_size": "1920,1080",
+    "user_data_dir": "./browser_profile"
+  },
+  "detection": {
+    "use_yolo": true,
+    "confidence_threshold": 0.5,
+    "enable_logo_detection": true,
+    "logo_detection_method": "ocr",
+    "use_brand_from_metadata": true
+  },
+  "output": {
+    "results_file": "browser_analysis_results.json",
+    "images_folder": "downloaded_images",
+    "save_images": true,
+    "upgrade_image_resolution": true,
+    "download_max_retries": 3,
+    "download_timeout": 30,
+    "skip_failed_downloads": true
+  }
+}

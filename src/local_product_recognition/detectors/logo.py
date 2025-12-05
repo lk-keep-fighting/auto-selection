@@ -45,6 +45,12 @@ class BrandLogoDetector(FeatureDetector):
         ocr_detection = self._detect_via_text(image)
         if ocr_detection is not None:
             return ocr_detection
+        
+        # 即使没有匹配品牌，也尝试返回 OCR 识别的文本（低置信度）
+        unmatched_ocr = self._get_all_ocr_texts(image)
+        if unmatched_ocr:
+            return unmatched_ocr
+        
         return self._detect_via_templates(image)
 
     # ------------------------------------------------------------------
@@ -55,17 +61,34 @@ class BrandLogoDetector(FeatureDetector):
         if not self.brand_keywords:
             return None
 
-        text_regions = self._ocr.detect(image)
+        try:
+            text_regions = self._ocr.detect(image)
+        except Exception as e:
+            # OCR 检测失败，静默跳过
+            return None
+        
         if not text_regions:
             return None
+
+        # 记录所有 OCR 识别的文本（用于调试）
+        all_recognized_texts = [region.text for region in text_regions]
+        if all_recognized_texts:
+            print(f"    🔍 OCR 识别到 {len(all_recognized_texts)} 个文本区域: {', '.join(all_recognized_texts[:3])}{'...' if len(all_recognized_texts) > 3 else ''}")
+        
+        # 调试：显示品牌关键字（仅前3个）
+        if self.brand_keywords:
+            print(f"    🔑 匹配关键字: {', '.join([kw[1] for kw in self.brand_keywords[:3]])}...")
 
         for region in text_regions:
             normalized_text = self._normalize_label(region.text)
             if not normalized_text:
                 continue
+            
+            # 尝试匹配品牌关键字
             for normalized_keyword, label in self.brand_keywords:
                 if normalized_keyword and normalized_keyword in normalized_text:
                     x, y, w, h = region.bounding_box
+                    print(f"    ✅ OCR 匹配成功: '{region.text}' 匹配品牌 '{label}'")
                     return DetectionResult(
                         feature=self.feature,
                         confidence=self._clip_confidence(region.confidence),
@@ -76,7 +99,62 @@ class BrandLogoDetector(FeatureDetector):
                             "bounding_box": [int(x), int(y), int(w), int(h)],
                         },
                     )
+                # 反向匹配：检查品牌关键字是否在识别文本中
+                # 要求：识别文本至少3个字符，且匹配长度 >= 4
+                elif (normalized_keyword and 
+                      len(normalized_text) >= 3 and 
+                      len(normalized_keyword) >= 4 and 
+                      normalized_text in normalized_keyword):
+                    x, y, w, h = region.bounding_box
+                    print(f"    ✅ OCR 部分匹配: '{region.text}' 部分匹配品牌 '{label}'")
+                    return DetectionResult(
+                        feature=self.feature,
+                        confidence=self._clip_confidence(region.confidence * 0.8),  # 降低置信度
+                        details={
+                            "method": "ocr",
+                            "brand": label,
+                            "recognized_text": region.text,
+                            "bounding_box": [int(x), int(y), int(w), int(h)],
+                            "match_type": "partial"
+                        },
+                    )
+        
+        # OCR 识别了文本，但没有匹配品牌
+        if all_recognized_texts:
+            print(f"    ⚠️  OCR 识别了文本，但未匹配任何品牌关键字")
         return None
+    
+    def _get_all_ocr_texts(self, image: np.ndarray) -> Optional[DetectionResult]:
+        """获取所有 OCR 识别的文本，即使没有匹配品牌也返回"""
+        try:
+            text_regions = self._ocr.detect(image)
+        except Exception:
+            return None
+        
+        if not text_regions:
+            return None
+        
+        # 合并所有识别的文本
+        all_texts = [region.text for region in text_regions if region.text.strip()]
+        if not all_texts:
+            return None
+        
+        # 计算平均置信度
+        avg_confidence = sum(region.confidence for region in text_regions) / len(text_regions)
+        
+        # 返回低置信度的结果，包含所有识别的文本
+        print(f"    📝 保存未匹配的 OCR 文本: {', '.join(all_texts[:3])}{'...' if len(all_texts) > 3 else ''}")
+        return DetectionResult(
+            feature=self.feature,
+            confidence=self._clip_confidence(avg_confidence * 0.3),  # 低置信度
+            details={
+                "method": "ocr",
+                "brand": None,
+                "recognized_texts": all_texts,  # 所有识别的文本
+                "match_type": "unmatched",
+                "text_count": len(all_texts)
+            },
+        )
 
     # ------------------------------------------------------------------
     # Template fallback

@@ -1,0 +1,1320 @@
+{
+  "manifest_version": 3,
+  "name": "跨境ERP助手",
+  "description": "跨境ERP助手，支持采集100+货源平台商品，批量发布至数十家跨境电商平台店铺，支持一键代发采购，自动关联并同步采购单至货代系统",
+  "version": "2.6.29",
+  "icons": {
+    "16": "icon/16.png",
+    "24": "icon/24.png",
+    "48": "icon/48.png",
+    "128": "icon/128.png"
+  },
+  "permissions": [
+    "storage",
+    "scripting",
+    "cookies",
+    "declarativeNetRequestWithHostAccess",
+    "webRequest",
+    "management"
+  ],
+  "externally_connectable": {
+    "matches": [
+      "*://localhost/*",
+      "*://*.szchengji-inc.com/*",
+      "*://*.chengji-inc.com/*",
+      "*://*.kuajing-plw.happyporsche.com/*",
+      "*://*.91miaoshou.com/*"
+    ]
+  },
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "assets/platform-base-utils.css",
+        "env.json"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
+    },
+    {
+      "resources": [
+        "platform-base-utils.js",
+        "collect-platform-1688-unlisted.js",
+        "collect-platform-2tong-unlisted.js",
+        "collect-platform-aliexpress-unlisted.js",
+        "collect-platform-bao66-unlisted.js",
+        "collect-platform-coupang-unlisted.js",
+        "collect-platform-gigab2b-unlisted.js",
+        "collect-platform-haibei-unlisted.js",
+        "collect-platform-juyiwang-unlisted.js",
+        "collect-platform-k3-unlisted.js",
+        "collect-platform-kwaixiaodian-unlisted.js",
+        "collect-platform-lazada-unlisted.js",
+        "collect-platform-ozon-unlisted.js",
+        "collect-platform-shein-unlisted.js",
+        "collect-platform-shopee-unlisted.js",
+        "collect-platform-temu-unlisted.js",
+        "collect-platform-ugoodspirit-unlisted.js",
+        "collect-platform-vip-unlisted.js",
+        "collect-platform-walmart-unlisted.js",
+        "collect-platform-westmonth-unlisted.js",
+        "collect-platform-wildberries-unlisted.js",
+        "collect-platform-xingfujie-unlisted.js",
+        "fetch-platform-1688selloffer-unlisted.js"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
+    }
+  ],
+  "declarative_net_request": {
+    "rule_resources": [
+      {
+        "id": "ruleset_1",
+        "enabled": true,
+        "path": "rules.json"
+      }
+    ]
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "Default Popup Title",
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.91miaoshou.com/*"
+      ],
+      "run_at": "document_end",
+      "css": [
+        "assets/platform-base-utils.css",
+        "content-scripts/earth.css"
+      ],
+      "js": [
+        "platform-base-utils.js",
+        "content-scripts/earth.js"
+      ]
+    },
+    {
+      "matches": [
+        "*://*.1688.com/*"
+      ],
+      "run_at": "document_end",
+      "css": [
+        "assets/platform-base-utils.css"
+      ],
+      "js": [
+        "platform-base-utils.js",
+        "content-scripts/collect-platform-1688-content.js",
+        "content-scripts/purchase-platform-1688-content.js"
+      ]
+    },
+    {
+      "matches": [
+        "*://*.17qcc.com/*"
+      ],
+      "run_at": "document_end",
+      "css": [
+        "assets/platform-base-utils.css"
+      ],
+      "js": [
+        "platform-base-utils.js",
+        "content-scripts/collect-platform-17qcc-content.js"
+      ]
+    },
+    {
+      "matches": [
+        "*://*.17zwd.com/*"
+      ],
+      "run_at": "document_end",
+      "css": [
+        "assets/platform-base-utils.css"
+      ],
+      "js": [
+        "platform-base-utils.js",
+        "content-scripts/collect-platform-17zwd-content.js"
+      ]
+    },
+    {
+      "matches": [
+        "*://*.2tong.cn/*"
+      ],
+      "run_at": "document_end",
+      "css": [
+        "assets/platform-base-utils.css"
+      ],
+      "js": [
+        "platform-base-utils.js",
+        "content-scripts/collect-platform-2tong-content.js"
+      ]
+    },
+    {
+      "matches": [
+        "*://*.3e3e.cn/*"
+      ],
+      "run_at": "document_end",
+      "css": [
+        "assets/platform-base-utils.css"
+      ],
+      "js": [
+        "platform-base-utils.js",
+        "content-scripts/collect-platform-3e-content.js"
+      ]
+    },
+    {
+      "matches": [
+        "*://*.51mbk.com/*"
+      ],
+      "run_at": "document_end",
+      "css": [
+        "assets/platform-base-utils.css"
+      ],
+      "js": [
+        "platform-base-utils.js",
+        "content-scripts/collect-platform-51mbk-content.js"
+      ]
+    },
+    {
+      "matches": [
+        "*://*.51taoYang.com/*"
+      ],
+      "run_at": "document_end",
+      "css": [
+        "assets/platform-base-utils.css"
+      ],
+      "js": [
+        "platform-base-utils.js",
+        "content-scripts/collect-platform-51taoYang-content.js"
+      ]
+    },
+    {
+      "matches": [
+        "*://*.52dsy.com/*",
+        "*://*.52hqb.com/*"
+      ],
+      "run_at": "document_end",
+      "css": [
+        "assets/platform-base-utils.css"
+      ],
+      "js": [
+        "platform-base-utils.js",
+        "content-scripts/collect-platform-52dsy-content.js"
+      ]
+    },
+    {
+      "matches": [
+        "*://*.571xz.com/*"
+      ],
+      "run_at": "document_end",
+      "css": [
+        "assets/platform-base-utils.css"
+      ],
+      "js": [
+        "platform-base-utils.js",
+        "content-scripts/collect-platform-571xz-content.js"
+      ]
+    },
+    {
+      "matches": [
+        "*://*.5ts.com/*"
+      ],
+      "run_at": "document_end",
+      "css": [
+        "assets/platform-base-utils.css"
+      ],
+      "js": [
+        "platform-base-utils.js",
+        "content-scripts/collect-platform-5ts-content.js"
+      ]
+    },
+    {
+      "matches": [
+        "*://*.91jf.com/*"
+      ],
+      "run_at": "document_end",
+      "css": [
+        "assets/platform-base-utils.css"
+      ],
+      "js": [
+        "platform-base-utils.js",
+        "content-scripts/collect-platform-91jf-content.js"
+      ]
+    },
+    {
+      "matches": [
+        "*://*.cjdropshipping.cn/*",
+        "*://*.cjdropshipping.com/*"
+      ],
+      "run_at": "document_end",
+      "css": [
+        "assets/platform-base-utils.css"
+      ],
+      "js": [
+        "platform-base-utils.js",
+        "content-scripts/collect-platform-CJDropshipping-content.js"
+      ]
+    },
+    {
+      "matches": [
+        "*://*.alibaba.com/*"
+      ],
+      "all_frames": true,
+      "run_at": "document_end",
+      "css": [
+        "assets/platform-base-utils.css"
+      ],
+      "js": [
+        "platform-base-utils.js",
+        "content-scripts/collect-platform-alibaba-content.js"
+      ]
+    },
+    {
+      "matches": [
+        "*://*.aliexpress.com/*",
+        "*://*.aliexpress.ru/*",
+        "*://*.aliexpress.us/*"
+      ],
+      "run_at": "document_end",
+      "css": [
+        "assets/platform-base-utils.css"
+      ],
+      "js": [
+        "platform-base-utils.js",
+        "content-scripts/collect-platform-aliexpress-content.js"
+      ]
+    },
+    {
+      "matches": [
+        "*://*.allegro.pl/*"
+      ],
+      "run_at": "document_end",
+      "css": [
+        "assets/platform-base-utils.css"
+      ],
+      "js": [
+        "platform-base-utils.js",
+        "content-scripts/collect-platform-allegro-content.js"
+      ]
+    },
+    {
+      "matches": [
+        "*://*.amazon.ae/*",
+        "*://*.amazon.ca/*",
+        "*://*.amazon.cn/*",
+        "*://*.amazon.co.jp/*",
+        "*://*.amazon.co.uk/*",
+        "*://*.amazon.com.au/*",
+        "*://*.amazon.com.br/*",
+        "*://*.amazon.com.mx/*",
+        "*://*.amazon.com.tr/*",
+        "*://*.amazon.com/*",
+        "*://*.amazon.de/*",
+        "*://*.amazon.eg/*",
+        "*://*.amazon.es/*",
+        "*://*.amazon.fr/*",
+        "*://*.amazon.ie/*",
+        "*://*.amazon.in/*",
+        "*://*.amazon.it/*",
+        "*://*.amazon.nl/*",
+        "*://*.amazon.pl/*",
+        "*://*.amazon.sa/*",
+        "*://*.amazon.se/*",
+        "*://*.amazon.sg/*"
+      ],
+      "run_at": "document_end",
+      "css": [
+        "assets/platform-base-utils.css"
+      ],
+      "js": [
+        "platform-base-utils.js",
+        "content-scripts/collect-platform-amazon-content.js"
+      ]
+    },
+    {
+      "matches": [
+        "*://*.asics.com/*"
+      ],
+      "run_at": "document_end",
+      "css": [
+        "assets/platform-base-utils.css"
+      ],
+      "js": [
+        "platform-base-utils.js",
+        "content-scripts/collect-platform-asics-content.js"
+      ]
+    },
+    {
+      "matches": [
+        "*://*.bao66.cn/*"
+      ],
+      "run_at": "document_end",
+      "css": [
+        "assets/platform-base-utils.css"
+      ],
+      "js": [
+        "platform-base-utils.js",
+        "content-scripts/collect-platform-bao66-content.js"
+      ]
+    },
+    {
+      "matches": [
+        "*://*.biyao.com/*"
+      ],
+      "run_at": "document_end",
+      "css": [
+        "assets/platform-base-utils.css"
+      ],
+      "js": [
+        "platform-base-utils.js",
+        "content-scripts/collect-platform-biyao-content.js"
+      ]
+    },
+    {
+      "matches": [
+        "*://*.chinavasion.com/*"
+      ],
+      "run_at": "document_end",
+      "css": [
+        "assets/platform-base-utils.css"
+      ],
+      "js": [
+        "platform-base-utils.js",
+        "content-scripts/collect-platform-chinavasion-content.js"
+      ]
+    },
+    {
+      "matches": [
+        "*://*.coupang.com/*"
+      ],
+      "run_at": "document_end",
+      "css": [
+        "assets/platform-base-utils.css"
+      ],
+      "js": [
+        "platform-base-utils.js",
+        "content-scripts/collect-platform-coupang-content.js"
+      ]
+    },
+    {
+      "matches": [
+        "*://*.dangdang.com/*"
+      ],
+      "run_at": "document_end",
+      "css": [
+        "assets/platform-base-utils.css"
+      ],
+      "js": [
+        "platform-base-utils.js",
+        "content-scripts/collect-platform-dangdang-content.js"
+      ]
+    },
+    {
+      "matches": [
+        "*://*.daraz.com.bd/*",
+        "*://*.daraz.com.mm/*",
+        "*://*.daraz.com.np/*",
+        "*://*.daraz.lk/*",
+        "*://*.daraz.pk/*"
+      ],
+      "run_at": "document_end",
+      "css": [
+        "assets/platform-base-utils.css"
+      ],
+      "js": [
+        "platform-base-utils.js",
+        "content-scripts/collect-platform-daraz-content.js"
+      ]
+    },
+    {
+      "matches": [
+        "*://*.dhgate.com/*"
+      ],
+      "run_at": "document_end",
+      "css": [
+        "assets/platform-base-utils.css"
+      ],
+      "js": [
+        "platform-base-utils.js",
+        "content-scripts/collect-platform-dh-content.js"
+      ]
+    },
+    {
+      "matches": [
+        "*://*.doufapt.com/*"
+      ],
+      "run_at": "document_end",
+      "css": [
+        "assets/platform-base-utils.css"
+      ],
+      "js": [
+        "platform-base-utils.js",
+        "content-scripts/collect-platform-doufapt-content.js"
+      ]
+    },
+    {
+      "matches": [
+        "*://*.e3hui.cn/*",
+        "*://*.e3hui.com/*"
+      ],
+      "run_at": "document_end",
+      "css": [
+        "assets/platform-base-utils.css"
+      ],
+      "js": [
+        "platform-base-utils.js",
+        "content-scripts/collect-platform-e3hui-content.js"
+      ]
+    },
+    {
+      "matches": [
+        "*://*.ebay.ca/*",
+        "*://*.ebay.ch/*",
+        "*://*.ebay.co.uk/*",
+        "*://*.ebay.com.au/*",
+        "*://*.ebay.com.sg/*",
+        "*://*.ebay.com/*",
+        "*://*.ebay.de/*",
+        "*://*.ebay.fr/*",
+        "*://*.ebay.it/*"
+      ],
+      "run_at": "document_end",
+      "css": [
+        "assets/platform-base-utils.css"
+      ],
+      "js": [
+        "platform-base-utils.js",
+        "content-scripts/collect-platform-ebay-content.js"
+      ]
+    },
+    {
+      "matches": [
+        "*://*.etsy.com/*"
+      ],
+      "run_at": "document_end",
+      "css": [
+        "assets/platform-base-utils.css"
+      ],
+      "js": [
+        "platform-base-utils.js",
+        "content-scripts/collect-platform-etsy-content.js"
+      ]
+    },
+    {
+      "matches": [
+        "*://*.fulink888.com/*"
+      ],
+      "run_at": "document_end",
+      "css": [
+        "assets/platform-base-utils.css"
+      ],
+      "js": [
+        "platform-base-utils.js",
+        "content-scripts/collect-platform-fulink-content.js"
+      ]
+    },
+    {
+      "matches": [
+        "*://*.gigab2b.com/*"
+      ],
+      "run_at": "document_end",
+      "css": [
+        "assets/platform-base-utils.css"
+      ],
+      "js": [
+        "platform-base-utils.js",
+        "content-scripts/collect-platform-gigab2b-content.js"
+      ]
+    },
+    {
+      "matches": [
+        "*://*.go2.cn/*"
+      ],
+      "run_at": "document_end",
+      "css": [
+        "assets/platform-base-utils.css"
+      ],
+      "js": [
+        "platform-base-utils.js",
+        "content-scripts/collect-platform-go2-content.js"
+      ]
+    },
+    {
+      "matches": [
+        "*://*.haibeigoods.com/*"
+      ],
+      "run_at": "document_end",
+      "css": [
+        "assets/platform-base-utils.css"
+      ],
+      "js": [
+        "platform-base-utils.js",
+        "content-scripts/collect-platform-haibei-content.js"
+      ]
+    },
+    {
+      "matches": [
+        "*://*.huoniuniu.com/*"
+      ],
+      "run_at": "document_end",
+      "css": [
+        "assets/platform-base-utils.css"
+      ],
+      "js": [
+        "platform-base-utils.js",
+        "content-scripts/collect-platform-huoniuniu-content.js"
+      ]
+    },
+    {
+      "matches": [
+        "*://*.hznzcn.com/*"
+      ],
+      "run_at": "document_end",
+      "css": [
+        "assets/platform-base-utils.css"
+      ],
+      "js": [
+        "platform-base-utils.js",
+        "content-scripts/collect-platform-hznz-content.js"
+      ]
+    },
+    {
+      "matches": [
+        "*://*.jd.com/*"
+      ],
+      "run_at": "document_end",
+      "css": [
+        "assets/platform-base-utils.css"
+      ],
+      "js": [
+        "platform-base-utils.js",
+        "content-scripts/collect-platform-jd-content.js"
+      ]
+    },
+    {
+      "matches": [
+        "*://*.joom.com/*"
+      ],
+      "run_at": "document_end",
+      "css": [
+        "assets/platform-base-utils.css"
+      ],
+      "js": [
+        "platform-base-utils.js",
+        "content-scripts/collect-platform-joom-content.js"
+      ]
+    },
+    {
+      "matches": [
+        "*://*.jumia.ci/*",
+        "*://*.jumia.co.ke/*",
+        "*://*.jumia.co.za/*",
+        "*://*.jumia.com.dz/*",
+        "*://*.jumia.com.eg/*",
+        "*://*.jumia.com.gh/*",
+        "*://*.jumia.com.ng/*",
+        "*://*.jumia.com.tn/*",
+        "*://*.jumia.ma/*",
+        "*://*.jumia.sn/*",
+        "*://*.jumia.ug/*"
+      ],
+      "run_at": "document_end",
+      "css": [
+        "assets/platform-base-utils.css"
+      ],
+      "js": [
+        "platform-base-utils.js",
+        "content-scripts/collect-platform-jumia-content.js"
+      ]
+    },
+    {
+      "matches": [
+        "*://*.jp0663.com/*"
+      ],
+      "run_at": "document_end",
+      "css": [
+        "assets/platform-base-utils.css"
+      ],
+      "js": [
+        "platform-base-utils.js",
+        "content-scripts/collect-platform-junpu-content.js"
+      ]
+    },
+    {
+      "matches": [
+        "*://*.juyi5.cn/*"
+      ],
+      "run_at": "document_end",
+      "css": [
+        "assets/platform-base-utils.css"
+      ],
+      "js": [
+        "platform-base-utils.js",
+        "content-scripts/collect-platform-juyiwang-content.js"
+      ]
+    },
+    {
+      "matches": [
+        "*://*.k3.cn/*",
+        "*://*.xyk3.com/*"
+      ],
+      "run_at": "document_end",
+      "css": [
+        "assets/platform-base-utils.css"
+      ],
+      "js": [
+        "platform-base-utils.js",
+        "content-scripts/collect-platform-k3-content.js"
+      ]
+    },
+    {
+      "matches": [
+        "*://*.kongfz.com/*"
+      ],
+      "run_at": "document_end",
+      "css": [
+        "assets/platform-base-utils.css"
+      ],
+      "js": [
+        "platform-base-utils.js",
+        "content-scripts/collect-platform-kongfz-content.js"
+      ]
+    },
+    {
+      "matches": [
+        "*://*.kwaixiaodian.com/*"
+      ],
+      "run_at": "document_end",
+      "css": [
+        "assets/platform-base-utils.css"
+      ],
+      "js": [
+        "platform-base-utils.js",
+        "content-scripts/collect-platform-kwaixiaodian-content.js"
+      ]
+    },
+    {
+      "matches": [
+        "*://*.lazada.co.id/*",
+        "*://*.lazada.co.th/*",
+        "*://*.lazada.co/*",
+        "*://*.lazada.com.co/*",
+        "*://*.lazada.com.id/*",
+        "*://*.lazada.com.my/*",
+        "*://*.lazada.com.ph/*",
+        "*://*.lazada.com.sg/*",
+        "*://*.lazada.com.th/*",
+        "*://*.lazada.com.vn/*",
+        "*://*.lazada.id/*",
+        "*://*.lazada.my/*",
+        "*://*.lazada.ph/*",
+        "*://*.lazada.sg/*",
+        "*://*.lazada.th/*",
+        "*://*.lazada.vn/*"
+      ],
+      "run_at": "document_end",
+      "css": [
+        "assets/platform-base-utils.css"
+      ],
+      "js": [
+        "platform-base-utils.js",
+        "content-scripts/collect-platform-lazada-content.js"
+      ]
+    },
+    {
+      "matches": [
+        "*://*.lchyw.com/*"
+      ],
+      "run_at": "document_end",
+      "css": [
+        "assets/platform-base-utils.css"
+      ],
+      "js": [
+        "platform-base-utils.js",
+        "content-scripts/collect-platform-lchyw-content.js"
+      ]
+    },
+    {
+      "matches": [
+        "*://*.mercadolibre.cl/*",
+        "*://*.mercadolibre.co.cr/*",
+        "*://*.mercadolibre.com.ar/*",
+        "*://*.mercadolibre.com.bo/*",
+        "*://*.mercadolibre.com.co/*",
+        "*://*.mercadolibre.com.do/*",
+        "*://*.mercadolibre.com.ec/*",
+        "*://*.mercadolibre.com.gt/*",
+        "*://*.mercadolibre.com.hn/*",
+        "*://*.mercadolibre.com.mx/*",
+        "*://*.mercadolibre.com.ni/*",
+        "*://*.mercadolibre.com.pa/*",
+        "*://*.mercadolibre.com.pe/*",
+        "*://*.mercadolibre.com.py/*",
+        "*://*.mercadolibre.com.sv/*",
+        "*://*.mercadolibre.com.uy/*",
+        "*://*.mercadolibre.com.ve/*",
+        "*://*.mercadolivre.com.br/*"
+      ],
+      "run_at": "document_end",
+      "css": [
+        "assets/platform-base-utils.css"
+      ],
+      "js": [
+        "platform-base-utils.js",
+        "content-scripts/collect-platform-mercadolibre-content.js"
+      ]
+    },
+    {
+      "matches": [
+        "*://*.mmgg.com/*"
+      ],
+      "run_at": "document_end",
+      "css": [
+        "assets/platform-base-utils.css"
+      ],
+      "js": [
+        "platform-base-utils.js",
+        "content-scripts/collect-platform-mmgg-content.js"
+      ]
+    },
+    {
+      "matches": [
+        "*://*.mogu.com/*",
+        "*://*.mogujie.com/*"
+      ],
+      "run_at": "document_end",
+      "css": [
+        "assets/platform-base-utils.css"
+      ],
+      "js": [
+        "platform-base-utils.js",
+        "content-scripts/collect-platform-mogujie-content.js"
+      ]
+    },
+    {
+      "matches": [
+        "*://*.neobund.com/*"
+      ],
+      "run_at": "document_end",
+      "css": [
+        "assets/platform-base-utils.css"
+      ],
+      "js": [
+        "platform-base-utils.js",
+        "content-scripts/collect-platform-neobund-content.js"
+      ]
+    },
+    {
+      "matches": [
+        "*://*.ozon.ru/*"
+      ],
+      "run_at": "document_end",
+      "css": [
+        "assets/platform-base-utils.css"
+      ],
+      "js": [
+        "platform-base-utils.js",
+        "content-scripts/collect-platform-ozon-content.js"
+      ]
+    },
+    {
+      "matches": [
+        "*://*.rakuten.co.jp/*",
+        "*://*.rakuten.com.tw/*"
+      ],
+      "run_at": "document_end",
+      "css": [
+        "assets/platform-base-utils.css"
+      ],
+      "js": [
+        "platform-base-utils.js",
+        "content-scripts/collect-platform-rakuten-content.js"
+      ]
+    },
+    {
+      "matches": [
+        "*://*.saleyee.cn/*",
+        "*://*.saleyee.com/*"
+      ],
+      "run_at": "document_end",
+      "css": [
+        "assets/platform-base-utils.css"
+      ],
+      "js": [
+        "platform-base-utils.js",
+        "content-scripts/collect-platform-saleyee-content.js"
+      ]
+    },
+    {
+      "matches": [
+        "*://*.secoo.com/*"
+      ],
+      "run_at": "document_end",
+      "css": [
+        "assets/platform-base-utils.css"
+      ],
+      "js": [
+        "platform-base-utils.js",
+        "content-scripts/collect-platform-secoo-content.js"
+      ]
+    },
+    {
+      "matches": [
+        "*://*.shein.co.uk/*",
+        "*://*.shein.com.hk/*",
+        "*://*.shein.com.mx/*",
+        "*://*.shein.com.uk/*",
+        "*://*.shein.com.vn/*",
+        "*://*.shein.com/*",
+        "*://*.shein.tw/*"
+      ],
+      "run_at": "document_end",
+      "css": [
+        "assets/platform-base-utils.css"
+      ],
+      "js": [
+        "platform-base-utils.js",
+        "content-scripts/collect-platform-shein-content.js"
+      ]
+    },
+    {
+      "matches": [
+        "*://*.shopee.cl/*",
+        "*://*.shopee.co.id/*",
+        "*://*.shopee.co.th/*",
+        "*://*.shopee.com.ar/*",
+        "*://*.shopee.com.br/*",
+        "*://*.shopee.com.co/*",
+        "*://*.shopee.com.mx/*",
+        "*://*.shopee.com.my/*",
+        "*://*.shopee.es/*",
+        "*://*.shopee.ph/*",
+        "*://*.shopee.pl/*",
+        "*://*.shopee.sg/*",
+        "*://*.shopee.tw/*",
+        "*://*.shopee.vn/*",
+        "*://*.xiapibuy.com/*"
+      ],
+      "run_at": "document_end",
+      "css": [
+        "assets/platform-base-utils.css"
+      ],
+      "js": [
+        "platform-base-utils.js",
+        "content-scripts/collect-platform-shopee-content.js"
+      ]
+    },
+    {
+      "matches": [
+        "*://*.suning.com/*"
+      ],
+      "run_at": "document_end",
+      "css": [
+        "assets/platform-base-utils.css"
+      ],
+      "js": [
+        "platform-base-utils.js",
+        "content-scripts/collect-platform-sn-content.js"
+      ]
+    },
+    {
+      "matches": [
+        "*://*.sooxie.com/*"
+      ],
+      "run_at": "document_end",
+      "css": [
+        "assets/platform-base-utils.css"
+      ],
+      "js": [
+        "platform-base-utils.js",
+        "content-scripts/collect-platform-sooxie-content.js"
+      ]
+    },
+    {
+      "matches": [
+        "*://*.temu.com/*"
+      ],
+      "run_at": "document_end",
+      "css": [
+        "assets/platform-base-utils.css"
+      ],
+      "js": [
+        "platform-base-utils.js",
+        "content-scripts/collect-platform-temu-content.js"
+      ]
+    },
+    {
+      "matches": [
+        "*://*.tikmesh.com/*"
+      ],
+      "run_at": "document_end",
+      "css": [
+        "assets/platform-base-utils.css"
+      ],
+      "js": [
+        "platform-base-utils.js",
+        "content-scripts/collect-platform-tikmesh-content.js"
+      ]
+    },
+    {
+      "matches": [
+        "*://*.tiktok.com/*",
+        "*://*.tiktokw.eu/*",
+        "*://*.tokopedia.com/*"
+      ],
+      "run_at": "document_end",
+      "css": [
+        "assets/platform-base-utils.css"
+      ],
+      "js": [
+        "platform-base-utils.js",
+        "content-scripts/collect-platform-tiktok-content.js"
+      ]
+    },
+    {
+      "matches": [
+        "*://*.ugoodspirit.com/*"
+      ],
+      "run_at": "document_end",
+      "css": [
+        "assets/platform-base-utils.css"
+      ],
+      "js": [
+        "platform-base-utils.js",
+        "content-scripts/collect-platform-ugoodspirit-content.js"
+      ]
+    },
+    {
+      "matches": [
+        "*://*.vip.com/*"
+      ],
+      "run_at": "document_end",
+      "css": [
+        "assets/platform-base-utils.css"
+      ],
+      "js": [
+        "platform-base-utils.js",
+        "content-scripts/collect-platform-vip-content.js"
+      ]
+    },
+    {
+      "matches": [
+        "*://*.vvic.com/*"
+      ],
+      "run_at": "document_end",
+      "css": [
+        "assets/platform-base-utils.css"
+      ],
+      "js": [
+        "platform-base-utils.js",
+        "content-scripts/collect-platform-vvic-content.js"
+      ]
+    },
+    {
+      "matches": [
+        "*://*.walmart.com/*"
+      ],
+      "run_at": "document_end",
+      "css": [
+        "assets/platform-base-utils.css"
+      ],
+      "js": [
+        "platform-base-utils.js",
+        "content-scripts/collect-platform-walmart-content.js"
+      ]
+    },
+    {
+      "matches": [
+        "*://*.westmonth.com/*"
+      ],
+      "run_at": "document_end",
+      "css": [
+        "assets/platform-base-utils.css"
+      ],
+      "js": [
+        "platform-base-utils.js",
+        "content-scripts/collect-platform-westmonth-content.js"
+      ]
+    },
+    {
+      "matches": [
+        "*://*.wildberries.am/*",
+        "*://*.wildberries.by/*",
+        "*://*.wildberries.ru/*",
+        "*://*.wildberries.uz/*"
+      ],
+      "run_at": "document_end",
+      "css": [
+        "assets/platform-base-utils.css"
+      ],
+      "js": [
+        "platform-base-utils.js",
+        "content-scripts/collect-platform-wildberries-content.js"
+      ]
+    },
+    {
+      "matches": [
+        "*://*.wish.com/*"
+      ],
+      "run_at": "document_end",
+      "css": [
+        "assets/platform-base-utils.css"
+      ],
+      "js": [
+        "platform-base-utils.js",
+        "content-scripts/collect-platform-wish-content.js"
+      ]
+    },
+    {
+      "matches": [
+        "*://*.wsy.com/*"
+      ],
+      "run_at": "document_end",
+      "css": [
+        "assets/platform-base-utils.css"
+      ],
+      "js": [
+        "platform-base-utils.js",
+        "content-scripts/collect-platform-wsy-content.js"
+      ]
+    },
+    {
+      "matches": [
+        "*://*.xidibuy.com/*"
+      ],
+      "run_at": "document_end",
+      "css": [
+        "assets/platform-base-utils.css"
+      ],
+      "js": [
+        "platform-base-utils.js",
+        "content-scripts/collect-platform-xidi-content.js"
+      ]
+    },
+    {
+      "matches": [
+        "*://*.xingfujie.cn/*"
+      ],
+      "run_at": "document_end",
+      "css": [
+        "assets/platform-base-utils.css"
+      ],
+      "js": [
+        "platform-base-utils.js",
+        "content-scripts/collect-platform-xingfujie-content.js"
+      ]
+    },
+    {
+      "matches": [
+        "*://*.shopping.yahoo.co.jp/*"
+      ],
+      "run_at": "document_end",
+      "css": [
+        "assets/platform-base-utils.css"
+      ],
+      "js": [
+        "platform-base-utils.js",
+        "content-scripts/collect-platform-yahoo-content.js"
+      ]
+    },
+    {
+      "matches": [
+        "*://*.pinduoduo.com/*",
+        "*://*.yangkeduo.com/*"
+      ],
+      "run_at": "document_end",
+      "css": [
+        "assets/platform-base-utils.css"
+      ],
+      "js": [
+        "platform-base-utils.js",
+        "content-scripts/collect-platform-yangkeduo-content.js"
+      ]
+    },
+    {
+      "matches": [
+        "*://*.yiu5.cn/*"
+      ],
+      "run_at": "document_end",
+      "css": [
+        "assets/platform-base-utils.css"
+      ],
+      "js": [
+        "platform-base-utils.js",
+        "content-scripts/collect-platform-yiu5-content.js"
+      ]
+    },
+    {
+      "matches": [
+        "*://*.yiwugo.com/*"
+      ],
+      "run_at": "document_end",
+      "css": [
+        "assets/platform-base-utils.css"
+      ],
+      "js": [
+        "platform-base-utils.js",
+        "content-scripts/collect-platform-yiwugou-content.js"
+      ]
+    },
+    {
+      "matches": [
+        "*://*.yms.com/*"
+      ],
+      "run_at": "document_end",
+      "css": [
+        "assets/platform-base-utils.css"
+      ],
+      "js": [
+        "platform-base-utils.js",
+        "content-scripts/collect-platform-yms-content.js"
+      ]
+    },
+    {
+      "matches": [
+        "*://*.youpizhijia.com/*"
+      ],
+      "run_at": "document_end",
+      "css": [
+        "assets/platform-base-utils.css"
+      ],
+      "js": [
+        "platform-base-utils.js",
+        "content-scripts/collect-platform-youpizhijia-content.js"
+      ]
+    },
+    {
+      "matches": [
+        "*://*.yunchepin.cn/*"
+      ],
+      "run_at": "document_end",
+      "css": [
+        "assets/platform-base-utils.css"
+      ],
+      "js": [
+        "platform-base-utils.js",
+        "content-scripts/collect-platform-yunchepin-content.js"
+      ]
+    },
+    {
+      "matches": [
+        "*://*.zappos.com/*"
+      ],
+      "run_at": "document_end",
+      "css": [
+        "assets/platform-base-utils.css"
+      ],
+      "js": [
+        "platform-base-utils.js",
+        "content-scripts/collect-platform-zappos-content.js"
+      ]
+    },
+    {
+      "matches": [
+        "*://*.zhaojiafang.com/*"
+      ],
+      "run_at": "document_end",
+      "css": [
+        "assets/platform-base-utils.css"
+      ],
+      "js": [
+        "platform-base-utils.js",
+        "content-scripts/collect-platform-zhaojiafang-content.js"
+      ]
+    },
+    {
+      "matches": [
+        "*://s.1688.com//selloffer/*",
+        "*://s.1688.com/selloffer/*"
+      ],
+      "run_at": "document_end",
+      "css": [
+        "assets/platform-base-utils.css"
+      ],
+      "js": [
+        "platform-base-utils.js",
+        "content-scripts/fetch-platform-1688selloffer-content.js"
+      ]
+    },
+    {
+      "matches": [
+        "*://*.alipay.com/*",
+        "*://*.taobao.com/*"
+      ],
+      "run_at": "document_end",
+      "css": [
+        "assets/platform-base-utils.css"
+      ],
+      "js": [
+        "platform-base-utils.js",
+        "content-scripts/purchase-platform-taobao-content.js"
+      ]
+    },
+    {
+      "matches": [
+        "*://*.alipay.com/*",
+        "*://*.tmall.com/*"
+      ],
+      "run_at": "document_end",
+      "css": [
+        "assets/platform-base-utils.css"
+      ],
+      "js": [
+        "platform-base-utils.js",
+        "content-scripts/purchase-platform-tmall-content.js"
+      ]
+    },
+    {
+      "matches": [
+        "*://*.alipay.com/*",
+        "*://*.pinduoduo.com/*",
+        "*://*.yangkeduo.com/*"
+      ],
+      "run_at": "document_end",
+      "css": [
+        "assets/platform-base-utils.css"
+      ],
+      "js": [
+        "platform-base-utils.js",
+        "content-scripts/purchase-platform-yangkeduo-content.js"
+      ]
+    },
+    {
+      "matches": [
+        "*://*.sso.geiwohuo.com/*"
+      ],
+      "run_at": "document_end",
+      "css": [
+        "assets/platform-base-utils.css"
+      ],
+      "js": [
+        "platform-base-utils.js",
+        "content-scripts/platformCrawl-crawl-sheinChoice-content.js"
+      ]
+    },
+    {
+      "matches": [
+        "*://*.agentseller-eu.temu.com/*",
+        "*://*.agentseller-us.temu.com/*",
+        "*://*.agentseller.temu.com/*",
+        "*://*.seller-eu.temu.com/*",
+        "*://*.seller.kuajingmaihuo.com/*",
+        "*://*.seller.temu.com/*"
+      ],
+      "run_at": "document_end",
+      "css": [
+        "assets/platform-base-utils.css"
+      ],
+      "js": [
+        "platform-base-utils.js",
+        "content-scripts/platformCrawl-crawl-temu-content.js"
+      ]
+    }
+  ],
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAm0xvIIHKojAuKi6hDzSXk08CoaaVVcZohhhKYVw/n/unXFnPxztMonajOC2lGe/nRqJjjLmkjc5cEpaQzimEYYgt5z9RYWp0wBYmec2RzHalGVOcUSswm4v4wgF1mWuN5q35fh3WYCdSVOVF5IXu8apCbteLGoMBn+ixzzRDsWSxZE4hZDnEzu7iX285SNAYje9ChPPVZuVDGqMwRFOc/rPPFe+Rndr6RgbS6WQkmf2iQ7A1XBL6U7qIz9OUUFHLPzIb8AD0wckoE17ylWOxseKICvdq+x3HYd+Ka1qSChaY9rIuDl0/sp0Za/c6mgmbu1oQzPAmez++tWPY5WIdlwIDAQAB"
+}

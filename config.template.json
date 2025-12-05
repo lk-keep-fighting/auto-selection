@@ -1,0 +1,53 @@
+{
+  "_comment": "这是一个配置文件模板，可以复制修改用于不同的网站",
+  
+  "targetUrl": "https://example.com/products",
+  
+  "selectors": {
+    "_comment": "CSS 选择器配置 - 根据目标网站的 HTML 结构修改",
+    "imageList": ".product-list",
+    "cardItem": ".product-card",
+    "imageItem": "img.product-image",
+    "asinSelector": ".product-id",
+    "productLinkSelector": "a.product-link",
+    "titleSelector": ".product-title"
+  },
+  
+  "browser": {
+    "_comment": "浏览器配置",
+    "headless": false,
+    "window_size": "1920,1080",
+    "user_data_dir": "./browser_profile"
+  },
+  
+  "detection": {
+    "_comment": "图像检测配置",
+    "use_yolo": true,
+    "confidence_threshold": 0.5,
+    "enable_logo_detection": false,
+    "logo_model_path": null
+  },
+  
+  "output": {
+    "_comment": "输出配置",
+    "results_file": "browser_analysis_results.json",
+    "images_folder": "downloaded_images",
+    "save_images": true
+  },
+  
+  "_instructions": {
+    "如何使用": [
+      "1. 复制此模板文件为 config.json",
+      "2. 修改 targetUrl 为目标网站的 URL",
+      "3. 使用浏览器开发者工具检查页面元素，修改 selectors 中的 CSS 选择器",
+      "4. 运行 python browser_automation.py"
+    ],
+    "如何找到 CSS 选择器": [
+      "1. 在浏览器中打开目标网页",
+      "2. 按 F12 打开开发者工具",
+      "3. 点击元素选择器（左上角箭头图标）",
+      "4. 点击页面上的元素",
+      "5. 在开发者工具中右键该元素 -> Copy -> Copy selector"
+    ]
+  }
+}

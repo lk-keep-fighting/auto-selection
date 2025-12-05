@@ -15,7 +15,9 @@ requires-python = ">=3.10"
 dependencies = [
   "numpy>=1.24,<3.0",
   "opencv-python-headless>=4.8",
-  "Pillow>=10.0"
+  "Pillow>=10.0",
+  "playwright>=1.40",
+  "requests>=2.31"
 ]
 
 [project.optional-dependencies]
