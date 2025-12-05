@@ -1,0 +1,144 @@
+{
+  "passed": [
+    {
+      "image": "image-001.jpg",
+      "low_confidence_detections": [
+        {
+          "feature": "electronics",
+          "confidence": 0.2974
+        }
+      ]
+    },
+    {
+      "image": "image-002.jpg"
+    },
+    {
+      "image": "image-003.jpg"
+    },
+    {
+      "image": "image-004.jpg",
+      "low_confidence_detections": [
+        {
+          "feature": "electronics",
+          "confidence": 0.4048
+        },
+        {
+          "feature": "person",
+          "confidence": 0.3241
+        }
+      ]
+    },
+    {
+      "image": "image-005.jpg"
+    },
+    {
+      "image": "image-006.jpg"
+    },
+    {
+      "image": "image-008.jpg"
+    },
+    {
+      "image": "image-009.jpg"
+    },
+    {
+      "image": "image-010.jpg"
+    },
+    {
+      "image": "image-011.jpg"
+    },
+    {
+      "image": "image-013.jpg"
+    },
+    {
+      "image": "image-014.jpg"
+    },
+    {
+      "image": "image-015.jpg",
+      "low_confidence_detections": [
+        {
+          "feature": "electronics",
+          "confidence": 0.2721
+        }
+      ]
+    },
+    {
+      "image": "image-016.jpg"
+    },
+    {
+      "image": "image-018.jpg",
+      "low_confidence_detections": [
+        {
+          "feature": "electronics",
+          "confidence": 0.3588
+        }
+      ]
+    },
+    {
+      "image": "image-019.jpg",
+      "low_confidence_detections": [
+        {
+          "feature": "electronics",
+          "confidence": 0.4267
+        }
+      ]
+    }
+  ],
+  "detected": [
+    {
+      "image": "image-000.jpg",
+      "features": [
+        {
+          "feature": "person",
+          "confidence": 0.7793
+        }
+      ],
+      "low_confidence_detections": [
+        {
+          "feature": "electronics",
+          "confidence": 0.3089
+        }
+      ]
+    },
+    {
+      "image": "image-007.jpg",
+      "features": [
+        {
+          "feature": "person",
+          "confidence": 0.8798
+        }
+      ],
+      "low_confidence_detections": [
+        {
+          "feature": "electronics",
+          "confidence": 0.3134
+        }
+      ]
+    },
+    {
+      "image": "image-012.jpg",
+      "features": [
+        {
+          "feature": "person",
+          "confidence": 0.8633
+        }
+      ],
+      "low_confidence_detections": null
+    },
+    {
+      "image": "image-017.jpg",
+      "features": [
+        {
+          "feature": "electronics",
+          "confidence": 0.6634
+        }
+      ],
+      "low_confidence_detections": null
+    }
+  ],
+  "summary": {
+    "total": 20,
+    "passed_count": 16,
+    "detected_count": 4,
+    "confidence_threshold": 0.5
+  }
+}
