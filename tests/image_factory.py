@@ -41,6 +41,34 @@ def create_logo_image(template_name: str = "acme.png") -> np.ndarray:
     return canvas
 
 
+def create_text_logo_image(text: str = "ACME") -> np.ndarray:
+    canvas = create_blank_image(480, 240)
+    font = cv2.FONT_HERSHEY_SIMPLEX
+    thickness = 5
+    normalized_text = text.upper()
+    target_width = int(canvas.shape[1] * 0.8)
+    base_size, _ = cv2.getTextSize(normalized_text, font, 1.0, thickness)
+    if base_size[0] == 0:
+        font_scale = 1.0
+    else:
+        font_scale = target_width / base_size[0]
+    font_scale = float(max(1.0, min(3.5, font_scale)))
+    text_size, baseline = cv2.getTextSize(normalized_text, font, font_scale, thickness)
+    origin_x = max(10, (canvas.shape[1] - text_size[0]) // 2)
+    origin_y = max(text_size[1] + baseline, (canvas.shape[0] + text_size[1]) // 2)
+    cv2.putText(
+        canvas,
+        normalized_text,
+        (origin_x, origin_y),
+        font,
+        font_scale,
+        (40, 40, 40),
+        thickness,
+        lineType=cv2.LINE_AA,
+    )
+    return canvas
+
+
 def create_chemical_image() -> np.ndarray:
     image = create_blank_image(320, 320)
     center = (160, 160)

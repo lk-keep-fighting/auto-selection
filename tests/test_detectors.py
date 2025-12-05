@@ -44,6 +44,15 @@ def test_logo_detector_detects_known_templates(template: str):
     _assert_detection(result, Feature.BRAND_LOGO)
 
 
+def test_logo_detector_detects_brand_text_via_ocr():
+    detector = BrandLogoDetector(brand_keywords=["ACME"])
+    image = factory.create_text_logo_image("Acme Rockets")
+    result = detector.detect(image)
+    _assert_detection(result, Feature.BRAND_LOGO)
+    assert result.details.get("method") == "ocr"
+    assert result.details.get("brand") == "ACME"
+
+
 def test_logo_detector_returns_none_for_plain_image():
     detector = BrandLogoDetector()
     blank = factory.create_blank_image()

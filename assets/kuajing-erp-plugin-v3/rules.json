@@ -1,0 +1,38 @@
+[
+  {
+    "id": 99,
+    "priority": 99,
+    "action": {
+      "type": "modifyHeaders",
+      "requestHeaders": [
+        {
+          "header": "Origin",
+          "operation": "set",
+          "value": "https://seller.kuajingmaihuo.com"
+        }
+      ]
+    },
+    "condition": {
+      "urlFilter": "*://*.kuajingmaihuo.com/*",
+      "resourceTypes": ["main_frame", "xmlhttprequest"]
+    }
+  },
+  {
+    "id": 98,
+    "priority": 98,
+    "action": {
+      "type": "modifyHeaders",
+      "requestHeaders": [
+        {
+          "header": "Origin",
+          "operation": "set",
+          "value": "https://trade.taobao.com"
+        }
+      ]
+    },
+    "condition": {
+      "urlFilter": "*://*/queryTrace.do?dimension=TRADE_ID*",
+      "resourceTypes": ["main_frame", "xmlhttprequest"]
+    }
+  }
+]
